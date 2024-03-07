@@ -41,7 +41,7 @@ node {
 		// -------------------------------------------------------------------------
 
 		stage('Authorize to Salesforce') {
-			rc = command "${toolbelt}/sfdx auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --jwtkeyfile ${server_key_file} --username ${SF_USERNAME} --setalias UAT"
+			rc = command "${toolbelt}/sf/bin/sfdx auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --jwtkeyfile ${server_key_file} --username ${SF_USERNAME} --setalias UAT"
 		    if (rc != 0) {
 			error 'Salesforce org authorization failed.'
 		    }
@@ -53,7 +53,7 @@ node {
 		// -------------------------------------------------------------------------
 
 		stage('Deploy and Run Tests') {
-		    rc = command "${toolbelt}/sfdx force:mdapi:deploy --wait 10 --deploydir ${DEPLOYDIR} --targetusername UAT --testlevel ${TEST_LEVEL}"
+		    rc = command "${toolbelt}/sf/bin/sfdx force:mdapi:deploy --wait 10 --deploydir ${DEPLOYDIR} --targetusername UAT --testlevel ${TEST_LEVEL}"
 		    if (rc != 0) {
 			error 'Salesforce deploy and test run failed.'
 		    }
@@ -65,7 +65,7 @@ node {
 		// -------------------------------------------------------------------------
 
 		//stage('Check Only Deploy') {
-		//    rc = command "${toolbelt}/sfdx force:mdapi:deploy --checkonly --wait 10 --deploydir ${DEPLOYDIR} --targetusername UAT --testlevel ${TEST_LEVEL}"
+		//    rc = command "${toolbelt}/sf/bin/sfdx force:mdapi:deploy --checkonly --wait 10 --deploydir ${DEPLOYDIR} --targetusername UAT --testlevel ${TEST_LEVEL}"
 		//    if (rc != 0) {
 		//        error 'Salesforce deploy failed.'
 		//    }
