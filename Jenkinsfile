@@ -4,7 +4,7 @@ node {
 
     def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
     def SF_USERNAME=env.SF_USERNAME
-    def SERVER_KEY_CREDENTIALS_ID='certs/key.pem'
+    //def SERVER_KEY_CREDENTIALS_ID='certs/key.pem'
     def DEPLOYDIR='src'
     def TEST_LEVEL='RunLocalTests'
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
@@ -28,13 +28,8 @@ node {
     // -------------------------------------------------------------------------
 
  	withEnv(["HOME=${env.WORKSPACE}"]) {	
-	    stage('Copy certs') {
-		    rc = command "echo $SF_CONSUMER_KEY; echo $SFDX_PATH; pwd;rm -rf certs;mkdir certs;cp -rf ../../certs/* certs/.;"
-		    if (rc != 0) {
-			error 'copy certs failed.'
-		    }
-		}
-	    withCredentials([file(credentialsId: SERVER_KEY_CREDENTIALS_ID, variable: 'server_key_file')]) {
+	    
+	    withCredentials([file(credentialsId: 'SERVER_KEY_CREDENTIALS_ID', variable: 'server_key_file')]) {
 		// -------------------------------------------------------------------------
 		// Authenticate to Salesforce using the server key.
 		// -------------------------------------------------------------------------
