@@ -21,6 +21,12 @@ node {
         checkout scm
     }
 
+	stage ('prepare env ') {
+       withEnv(["MY_TOOL_DIR=${tool name: 'toolbelt', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'}"]){
+
+        echo "Path to toolbelt-\"${toolbelt}\""
+        
+    }
 
     // -------------------------------------------------------------------------
     // Run all the enclosed stages with access to the Salesforce
