@@ -24,10 +24,9 @@ node {
 	stage ('prepare env ') {
        withEnv(["toolbelt=${tool name: 'toolbelt', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'}"]){
 
-        echo "Path to toolbelt-\"${toolbelt}\""
+        echo "Path to my_tool\"${toolbelt}\""
         
     }
-
     // -------------------------------------------------------------------------
     // Run all the enclosed stages with access to the Salesforce
     // JWT key credentials.
