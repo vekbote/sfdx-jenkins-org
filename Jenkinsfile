@@ -11,7 +11,12 @@ node {
 
 
     def toolbelt = tool 'toolbelt'
-
+	environment {
+        // Removed other variables for clarity...
+        SFDX_USE_GENERIC_UNIX_KEYCHAIN = true
+        // ...
+    }
+    
 
     // -------------------------------------------------------------------------
     // Check out code from source control.
