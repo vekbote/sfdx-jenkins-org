@@ -25,6 +25,7 @@ node {
        withEnv(["toolbelt=${tool name: 'toolbelt', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'}"]){
 
         echo "Path to my_tool\"${toolbelt}\""
+	   }
         
     }
     // -------------------------------------------------------------------------
