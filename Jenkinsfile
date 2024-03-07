@@ -22,7 +22,7 @@ node {
     }
 
 	stage ('prepare env ') {
-       withEnv(["MY_TOOL_DIR=${tool name: 'toolbelt', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'}"]){
+       withEnv(["toolbelt=${tool name: 'toolbelt', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'}"]){
 
         echo "Path to toolbelt-\"${toolbelt}\""
         
