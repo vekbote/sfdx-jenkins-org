@@ -4,7 +4,6 @@ node {
 
     def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
     def SF_USERNAME=env.SF_USERNAME
-    //def SERVER_KEY_CREDENTIALS_ID='certs/key.pem'
     def DEPLOYDIR='src'
     def TEST_LEVEL='RunLocalTests'
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
